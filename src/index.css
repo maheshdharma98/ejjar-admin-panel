@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Cairo', sans-serif;
+}
+
+[dir='rtl'] * {
+  font-family: 'Cairo', sans-serif;
+}
+
+:root {
+  --primary: #1A4FBA;
+  --sidebar: #0F172A;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 2px;
+}
