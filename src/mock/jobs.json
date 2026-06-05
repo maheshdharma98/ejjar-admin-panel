@@ -1,0 +1,152 @@
+[
+  {
+    "id": "job-001",
+    "rfq_id": "rfq-004",
+    "supplier_id": "sup-004",
+    "contractor_id": "con-004",
+    "allocated_resources": [
+      { "resource_id": "res-002", "quantity": 5, "unit": "persons" }
+    ],
+    "start_date": "2026-07-01",
+    "end_date": "2026-10-31",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-001.pdf",
+    "status": "in_progress",
+    "country": "Kuwait",
+    "city": "Hawalli"
+  },
+  {
+    "id": "job-002",
+    "rfq_id": "rfq-005",
+    "supplier_id": "sup-005",
+    "contractor_id": "con-005",
+    "allocated_resources": [
+      { "resource_id": "res-035", "quantity": 50, "unit": "pallets" }
+    ],
+    "start_date": "2026-06-18",
+    "end_date": "2026-06-22",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-002.pdf",
+    "status": "completed",
+    "country": "Bahrain",
+    "city": "Muharraq"
+  },
+  {
+    "id": "job-003",
+    "rfq_id": "rfq-006",
+    "supplier_id": "sup-003",
+    "contractor_id": "con-006",
+    "allocated_resources": [
+      { "resource_id": "res-014", "quantity": 1, "unit": "unit" }
+    ],
+    "start_date": "2026-08-01",
+    "end_date": "2027-06-30",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-003.pdf",
+    "status": "completed",
+    "country": "Qatar",
+    "city": "Lusail"
+  },
+  {
+    "id": "job-004",
+    "rfq_id": "rfq-010",
+    "supplier_id": "sup-009",
+    "contractor_id": "con-002",
+    "allocated_resources": [
+      { "resource_id": "res-040", "quantity": 3, "unit": "trips" }
+    ],
+    "start_date": "2026-06-28",
+    "end_date": "2026-06-30",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-004.pdf",
+    "status": "in_progress",
+    "country": "Saudi Arabia",
+    "city": "Khobar"
+  },
+  {
+    "id": "job-005",
+    "rfq_id": "rfq-012",
+    "supplier_id": "sup-006",
+    "contractor_id": "con-004",
+    "allocated_resources": [
+      { "resource_id": "res-015", "quantity": 1, "unit": "unit" }
+    ],
+    "start_date": "2026-07-05",
+    "end_date": "2026-09-05",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-005.pdf",
+    "status": "in_progress",
+    "country": "Kuwait",
+    "city": "Salmiya"
+  },
+  {
+    "id": "job-006",
+    "rfq_id": "rfq-013",
+    "supplier_id": "sup-009",
+    "contractor_id": "con-008",
+    "allocated_resources": [
+      { "resource_id": "res-024", "quantity": 3, "unit": "vehicles" }
+    ],
+    "start_date": "2026-06-12",
+    "end_date": "2026-12-12",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-006.pdf",
+    "status": "completed",
+    "country": "UAE",
+    "city": "Abu Dhabi"
+  },
+  {
+    "id": "job-007",
+    "rfq_id": "rfq-017",
+    "supplier_id": "sup-013",
+    "contractor_id": "con-003",
+    "allocated_resources": [
+      { "resource_id": "res-018", "quantity": 2, "unit": "units" }
+    ],
+    "start_date": "2026-06-20",
+    "end_date": "2026-10-20",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-007.pdf",
+    "status": "in_progress",
+    "country": "UAE",
+    "city": "Sharjah"
+  },
+  {
+    "id": "job-008",
+    "rfq_id": "rfq-018",
+    "supplier_id": "sup-015",
+    "contractor_id": "con-002",
+    "allocated_resources": [
+      { "resource_id": "res-032", "quantity": 2, "unit": "vehicles" }
+    ],
+    "start_date": "2026-06-22",
+    "end_date": "2026-09-22",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-008.pdf",
+    "status": "in_progress",
+    "country": "Saudi Arabia",
+    "city": "Tabuk"
+  },
+  {
+    "id": "job-009",
+    "rfq_id": "rfq-019",
+    "supplier_id": "sup-001",
+    "contractor_id": "con-006",
+    "allocated_resources": [
+      { "resource_id": "res-005", "quantity": 2, "unit": "persons" }
+    ],
+    "start_date": "2026-07-15",
+    "end_date": "2027-07-15",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-009.pdf",
+    "status": "completed",
+    "country": "Qatar",
+    "city": "Doha"
+  },
+  {
+    "id": "job-010",
+    "rfq_id": "rfq-003",
+    "supplier_id": "sup-006",
+    "contractor_id": "con-003",
+    "allocated_resources": [
+      { "resource_id": "res-028", "quantity": 3, "unit": "vehicles" }
+    ],
+    "start_date": "2026-06-15",
+    "end_date": "2026-12-15",
+    "work_order_url": "https://docs.ejjar.com/workorders/WO-2026-010.pdf",
+    "status": "in_progress",
+    "country": "UAE",
+    "city": "Dubai"
+  }
+]

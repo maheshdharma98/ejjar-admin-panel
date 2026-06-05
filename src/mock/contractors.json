@@ -1,0 +1,90 @@
+[
+  {
+    "id": "con-001",
+    "name": "Al Madina Construction Co.",
+    "phone": "+968 9123 4567",
+    "region": "Muscat Governorate",
+    "city": "Muscat",
+    "country": "Oman",
+    "total_rfqs": 34,
+    "status": "active",
+    "created_at": "2021-04-10T08:00:00Z"
+  },
+  {
+    "id": "con-002",
+    "name": "Desert Storm Projects LLC",
+    "phone": "+966 55 234 5678",
+    "region": "Riyadh Region",
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "total_rfqs": 58,
+    "status": "active",
+    "created_at": "2020-08-15T08:00:00Z"
+  },
+  {
+    "id": "con-003",
+    "name": "Gulf Wide Builders",
+    "phone": "+971 50 678 9012",
+    "region": "Dubai",
+    "city": "Dubai",
+    "country": "UAE",
+    "total_rfqs": 91,
+    "status": "active",
+    "created_at": "2019-12-01T08:00:00Z"
+  },
+  {
+    "id": "con-004",
+    "name": "Arabian Heights Contracting",
+    "phone": "+965 9876 5432",
+    "region": "Hawalli Governorate",
+    "city": "Hawalli",
+    "country": "Kuwait",
+    "total_rfqs": 22,
+    "status": "active",
+    "created_at": "2022-03-20T08:00:00Z"
+  },
+  {
+    "id": "con-005",
+    "name": "Peninsular Engineering WLL",
+    "phone": "+973 3901 2345",
+    "region": "Northern Governorate",
+    "city": "Muharraq",
+    "country": "Bahrain",
+    "total_rfqs": 17,
+    "status": "active",
+    "created_at": "2022-07-08T08:00:00Z"
+  },
+  {
+    "id": "con-006",
+    "name": "Crescent Build Group",
+    "phone": "+974 5567 8901",
+    "region": "Al Rayyan",
+    "city": "Al Rayyan",
+    "country": "Qatar",
+    "total_rfqs": 43,
+    "status": "active",
+    "created_at": "2021-01-25T08:00:00Z"
+  },
+  {
+    "id": "con-007",
+    "name": "Star Projects Arabia",
+    "phone": "+966 13 567 8901",
+    "region": "Eastern Province",
+    "city": "Khobar",
+    "country": "Saudi Arabia",
+    "total_rfqs": 29,
+    "status": "active",
+    "created_at": "2021-10-11T08:00:00Z"
+  },
+  {
+    "id": "con-008",
+    "name": "Oasis Infrastructure LLC",
+    "phone": "+971 2 890 1234",
+    "region": "Abu Dhabi",
+    "city": "Abu Dhabi",
+    "country": "UAE",
+    "total_rfqs": 12,
+    "status": "inactive",
+    "created_at": "2023-06-19T08:00:00Z"
+  }
+]

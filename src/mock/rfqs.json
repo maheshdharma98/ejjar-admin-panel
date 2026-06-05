@@ -1,0 +1,614 @@
+[
+  {
+    "id": "rfq-001",
+    "contractor_id": "con-001",
+    "category": "manpower",
+    "subcategory": "mason",
+    "description": "Need 10 experienced masons for a villa construction project in Muscat. Must have at least 5 years experience with brick and block work. Work starts early July.",
+    "quantity": 10,
+    "country": "Oman",
+    "city": "Muscat",
+    "region": "Muscat Governorate",
+    "start_date": "2026-07-05",
+    "end_date": "2026-12-05",
+    "status": "new",
+    "created_at": "2026-06-03T09:15:00Z",
+    "supplier_responses": []
+  },
+  {
+    "id": "rfq-002",
+    "contractor_id": "con-002",
+    "category": "machinery",
+    "subcategory": "excavator",
+    "description": "Require 2 CAT or Komatsu excavators (20+ ton class) for site clearing and foundation excavation at a commercial complex in Riyadh. Operator included.",
+    "quantity": 2,
+    "country": "Saudi Arabia",
+    "city": "Riyadh",
+    "region": "Riyadh Region",
+    "start_date": "2026-06-20",
+    "end_date": "2026-08-20",
+    "status": "supplier_responded",
+    "created_at": "2026-05-28T10:30:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-002-a",
+        "supplier_id": "sup-001",
+        "resource_id": "res-013",
+        "unit_price_usd": 450,
+        "total_price_usd": 54000,
+        "currency": "USD",
+        "notes": "CAT 320 available immediately. Operator has ARAMCO gate pass.",
+        "submitted_at": "2026-05-29T08:00:00Z",
+        "status": "pending"
+      },
+      {
+        "id": "sr-002-b",
+        "supplier_id": "sup-007",
+        "resource_id": "res-016",
+        "unit_price_usd": 420,
+        "total_price_usd": 50400,
+        "currency": "USD",
+        "notes": "Volvo EC220 available from June 22. Competitive rate for 60-day engagement.",
+        "submitted_at": "2026-05-30T11:20:00Z",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": "rfq-003",
+    "contractor_id": "con-003",
+    "category": "vehicles",
+    "subcategory": "bus",
+    "description": "Require 3 buses for daily worker transportation between accommodation camp and construction site in Dubai. 55-seat capacity minimum. With driver.",
+    "quantity": 3,
+    "country": "UAE",
+    "city": "Dubai",
+    "region": "Dubai",
+    "start_date": "2026-06-15",
+    "end_date": "2026-12-15",
+    "status": "negotiation",
+    "created_at": "2026-05-20T08:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-003-a",
+        "supplier_id": "sup-006",
+        "resource_id": "res-028",
+        "unit_price_usd": 260,
+        "total_price_usd": 142560,
+        "currency": "USD",
+        "notes": "Volvo B8R buses, 55 seats, AC, licensed drivers with UAE TCA permits.",
+        "submitted_at": "2026-05-22T09:00:00Z",
+        "status": "under_negotiation"
+      },
+      {
+        "id": "sr-003-b",
+        "supplier_id": "sup-009",
+        "resource_id": "res-028",
+        "unit_price_usd": 280,
+        "total_price_usd": 153440,
+        "currency": "USD",
+        "notes": "Yutong 55-seaters, 2024 model, GPS tracked, monthly fuel allowance included.",
+        "submitted_at": "2026-05-23T14:30:00Z",
+        "status": "under_negotiation"
+      }
+    ]
+  },
+  {
+    "id": "rfq-004",
+    "contractor_id": "con-004",
+    "category": "manpower",
+    "subcategory": "electrician",
+    "description": "Require 5 licensed electricians for MEP works in a new office tower in Hawalli. Must hold valid Kuwait Ministry of Electricity license.",
+    "quantity": 5,
+    "country": "Kuwait",
+    "city": "Hawalli",
+    "region": "Hawalli Governorate",
+    "start_date": "2026-07-01",
+    "end_date": "2026-10-31",
+    "status": "accepted",
+    "created_at": "2026-05-15T07:30:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-004-a",
+        "supplier_id": "sup-004",
+        "resource_id": "res-002",
+        "unit_price_usd": 65,
+        "total_price_usd": 65000,
+        "currency": "USD",
+        "notes": "Filipino electricians with Kuwait MOE license. Available July 1.",
+        "submitted_at": "2026-05-17T10:00:00Z",
+        "status": "accepted"
+      }
+    ]
+  },
+  {
+    "id": "rfq-005",
+    "contractor_id": "con-005",
+    "category": "shipping",
+    "subcategory": "pallet",
+    "description": "Need to ship 50 pallets of ceramic tiles from Manama to a hotel project site in Muharraq. Fragile cargo — proper handling required.",
+    "quantity": 50,
+    "country": "Bahrain",
+    "city": "Muharraq",
+    "region": "Muharraq Governorate",
+    "start_date": "2026-06-18",
+    "end_date": "2026-06-22",
+    "status": "confirmed",
+    "created_at": "2026-06-01T10:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-005-a",
+        "supplier_id": "sup-005",
+        "resource_id": "res-035",
+        "unit_price_usd": 110,
+        "total_price_usd": 5500,
+        "currency": "USD",
+        "notes": "LTL service available. Fragile cargo handling and shrink-wrap included.",
+        "submitted_at": "2026-06-02T08:00:00Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "sr-005-b",
+        "supplier_id": "sup-011",
+        "resource_id": "res-035",
+        "unit_price_usd": 125,
+        "total_price_usd": 6250,
+        "currency": "USD",
+        "notes": "Standard pallet service with GPS tracking.",
+        "submitted_at": "2026-06-02T11:30:00Z",
+        "status": "rejected"
+      }
+    ]
+  },
+  {
+    "id": "rfq-006",
+    "contractor_id": "con-006",
+    "category": "machinery",
+    "subcategory": "tower_crane",
+    "description": "Require 1 tower crane for the construction of a 40-storey residential tower in Lusail. Minimum 60m jib. Full erection and operator included.",
+    "quantity": 1,
+    "country": "Qatar",
+    "city": "Lusail",
+    "region": "Lusail",
+    "start_date": "2026-08-01",
+    "end_date": "2027-06-30",
+    "status": "completed",
+    "created_at": "2025-11-10T08:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-006-a",
+        "supplier_id": "sup-003",
+        "resource_id": "res-014",
+        "unit_price_usd": 1150,
+        "total_price_usd": 392000,
+        "currency": "USD",
+        "notes": "Liebherr LTM 1350, 60m jib. Full setup and certified operator.",
+        "submitted_at": "2025-11-12T09:00:00Z",
+        "status": "completed"
+      }
+    ]
+  },
+  {
+    "id": "rfq-007",
+    "contractor_id": "con-007",
+    "category": "manpower",
+    "subcategory": "welder",
+    "description": "Need 8 certified welders (3G/4G minimum) for structural steel works at a new industrial facility near Jubail. 6-month contract.",
+    "quantity": 8,
+    "country": "Saudi Arabia",
+    "city": "Jubail",
+    "region": "Eastern Province",
+    "start_date": "2026-07-10",
+    "end_date": "2027-01-10",
+    "status": "rejected",
+    "created_at": "2026-05-25T09:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-007-a",
+        "supplier_id": "sup-002",
+        "resource_id": "res-003",
+        "unit_price_usd": 80,
+        "total_price_usd": 115200,
+        "currency": "USD",
+        "notes": "Pakistani welders, 3G/4G certified. Saudi Aramco approved.",
+        "submitted_at": "2026-05-27T10:00:00Z",
+        "status": "rejected"
+      }
+    ]
+  },
+  {
+    "id": "rfq-008",
+    "contractor_id": "con-001",
+    "category": "vehicles",
+    "subcategory": "pickup",
+    "description": "Require 5 pickup trucks for site supervisors and material transport at a road project in Sohar. 3-month hire, no driver needed.",
+    "quantity": 5,
+    "country": "Oman",
+    "city": "Sohar",
+    "region": "North Al Batinah",
+    "start_date": "2026-06-25",
+    "end_date": "2026-09-25",
+    "status": "supplier_responded",
+    "created_at": "2026-06-01T11:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-008-a",
+        "supplier_id": "sup-010",
+        "resource_id": "res-025",
+        "unit_price_usd": 65,
+        "total_price_usd": 29250,
+        "currency": "USD",
+        "notes": "Ford F-150, 2023. Full insurance included. Available June 25.",
+        "submitted_at": "2026-06-02T14:00:00Z",
+        "status": "pending"
+      },
+      {
+        "id": "sr-008-b",
+        "supplier_id": "sup-007",
+        "resource_id": "res-025",
+        "unit_price_usd": 60,
+        "total_price_usd": 27000,
+        "currency": "USD",
+        "notes": "Mitsubishi L200 2024, basic insurance. Delivery to Sohar included.",
+        "submitted_at": "2026-06-03T09:30:00Z",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": "rfq-009",
+    "contractor_id": "con-003",
+    "category": "manpower",
+    "subcategory": "safety_officer",
+    "description": "Need 2 HSE officers with NEBOSH IGC for a 12-month posting on a mega-mall project in Dubai. Must speak Arabic and English.",
+    "quantity": 2,
+    "country": "UAE",
+    "city": "Dubai",
+    "region": "Dubai",
+    "start_date": "2026-07-01",
+    "end_date": "2027-06-30",
+    "status": "negotiation",
+    "created_at": "2026-05-30T10:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-009-a",
+        "supplier_id": "sup-005",
+        "resource_id": "res-010",
+        "unit_price_usd": 140,
+        "total_price_usd": 102200,
+        "currency": "USD",
+        "notes": "British nationals, bilingual, NEBOSH IGC + ISO 45001. Visa costs extra.",
+        "submitted_at": "2026-06-01T09:00:00Z",
+        "status": "under_negotiation"
+      }
+    ]
+  },
+  {
+    "id": "rfq-010",
+    "contractor_id": "con-002",
+    "category": "shipping",
+    "subcategory": "oversized",
+    "description": "Transport 3 large pre-fabricated steel trusses from Dammam port to project site in Khobar. Each truss 22m x 4m x 3m, approx 45 tonnes.",
+    "quantity": 3,
+    "country": "Saudi Arabia",
+    "city": "Khobar",
+    "region": "Eastern Province",
+    "start_date": "2026-06-28",
+    "end_date": "2026-06-30",
+    "status": "confirmed",
+    "created_at": "2026-06-01T08:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-010-a",
+        "supplier_id": "sup-009",
+        "resource_id": "res-040",
+        "unit_price_usd": 2800,
+        "total_price_usd": 8400,
+        "currency": "USD",
+        "notes": "Multi-axle trailers with police escort. MoT permits arranged. Night movement required.",
+        "submitted_at": "2026-06-02T07:00:00Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "sr-010-b",
+        "supplier_id": "sup-008",
+        "resource_id": "res-040",
+        "unit_price_usd": 3100,
+        "total_price_usd": 9300,
+        "currency": "USD",
+        "notes": "Goldhofer multi-axle. MoT permits included. Insurance on heavy cargo.",
+        "submitted_at": "2026-06-02T12:30:00Z",
+        "status": "rejected"
+      }
+    ]
+  },
+  {
+    "id": "rfq-011",
+    "contractor_id": "con-006",
+    "category": "manpower",
+    "subcategory": "rigger",
+    "description": "Need 4 certified riggers for a stadium roof steelwork project in Al Rayyan, Qatar. LEEA certification required.",
+    "quantity": 4,
+    "country": "Qatar",
+    "city": "Al Rayyan",
+    "region": "Al Rayyan",
+    "start_date": "2026-07-15",
+    "end_date": "2026-11-15",
+    "status": "new",
+    "created_at": "2026-06-03T14:00:00Z",
+    "supplier_responses": []
+  },
+  {
+    "id": "rfq-012",
+    "contractor_id": "con-004",
+    "category": "machinery",
+    "subcategory": "mobile_crane",
+    "description": "Need a 100-tonne+ mobile crane for heavy lifting of pre-cast concrete elements at a hospital project in Salmiya. 2-month hire.",
+    "quantity": 1,
+    "country": "Kuwait",
+    "city": "Salmiya",
+    "region": "Hawalli Governorate",
+    "start_date": "2026-07-05",
+    "end_date": "2026-09-05",
+    "status": "accepted",
+    "created_at": "2026-05-22T09:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-012-a",
+        "supplier_id": "sup-006",
+        "resource_id": "res-015",
+        "unit_price_usd": 950,
+        "total_price_usd": 57000,
+        "currency": "USD",
+        "notes": "Grove GMK5130-2, 130T capacity. Mobilization from Qatar ~3 days.",
+        "submitted_at": "2026-05-24T10:00:00Z",
+        "status": "accepted"
+      },
+      {
+        "id": "sr-012-b",
+        "supplier_id": "sup-004",
+        "resource_id": "res-015",
+        "unit_price_usd": 880,
+        "total_price_usd": 52800,
+        "currency": "USD",
+        "notes": "Liebherr LTM 1100, 100T. Local Kuwait — fast mobilization.",
+        "submitted_at": "2026-05-24T15:30:00Z",
+        "status": "rejected"
+      }
+    ]
+  },
+  {
+    "id": "rfq-013",
+    "contractor_id": "con-008",
+    "category": "vehicles",
+    "subcategory": "suv",
+    "description": "Require 3 4WD SUVs with drivers for site inspection and executive transportation at an oil field development project in Abu Dhabi desert area.",
+    "quantity": 3,
+    "country": "UAE",
+    "city": "Abu Dhabi",
+    "region": "Abu Dhabi",
+    "start_date": "2026-06-12",
+    "end_date": "2026-12-12",
+    "status": "completed",
+    "created_at": "2025-12-15T08:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-013-a",
+        "supplier_id": "sup-009",
+        "resource_id": "res-024",
+        "unit_price_usd": 120,
+        "total_price_usd": 65880,
+        "currency": "USD",
+        "notes": "Toyota Land Cruiser 200, 2024. Experienced drivers, desert-certified vehicles.",
+        "submitted_at": "2025-12-17T09:00:00Z",
+        "status": "completed"
+      }
+    ]
+  },
+  {
+    "id": "rfq-014",
+    "contractor_id": "con-005",
+    "category": "manpower",
+    "subcategory": "hvac_tech",
+    "description": "Need 4 HVAC technicians for installation and commissioning of central AC systems in a new hospital in Hamad Town, Bahrain.",
+    "quantity": 4,
+    "country": "Bahrain",
+    "city": "Hamad Town",
+    "region": "Northern Governorate",
+    "start_date": "2026-07-01",
+    "end_date": "2026-10-31",
+    "status": "supplier_responded",
+    "created_at": "2026-06-02T10:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-014-a",
+        "supplier_id": "sup-003",
+        "resource_id": "res-012",
+        "unit_price_usd": 70,
+        "total_price_usd": 34720,
+        "currency": "USD",
+        "notes": "Filipino HVAC techs, UAE ESMA certified. Available July 1.",
+        "submitted_at": "2026-06-03T08:00:00Z",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": "rfq-015",
+    "contractor_id": "con-007",
+    "category": "shipping",
+    "subcategory": "hazmat",
+    "description": "Require certified hazmat shipping of industrial chemicals (UN Class 3 & 8) from Jubail to Dammam port for export. All documentation needed.",
+    "quantity": 20,
+    "country": "Saudi Arabia",
+    "city": "Jubail",
+    "region": "Eastern Province",
+    "start_date": "2026-06-25",
+    "end_date": "2026-06-27",
+    "status": "negotiation",
+    "created_at": "2026-06-01T12:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-015-a",
+        "supplier_id": "sup-013",
+        "resource_id": "res-038",
+        "unit_price_usd": 580,
+        "total_price_usd": 11600,
+        "currency": "USD",
+        "notes": "UN Class 3 & 8 licensed. All docs prepared. Saudi Civil Defense approval included.",
+        "submitted_at": "2026-06-02T10:00:00Z",
+        "status": "under_negotiation"
+      }
+    ]
+  },
+  {
+    "id": "rfq-016",
+    "contractor_id": "con-001",
+    "category": "manpower",
+    "subcategory": "surveyor",
+    "description": "Require 1 licensed land surveyor for topographic survey and setting-out services for a new township development in Nizwa, Oman. 3 months.",
+    "quantity": 1,
+    "country": "Oman",
+    "city": "Nizwa",
+    "region": "Al Dakhiliyah",
+    "start_date": "2026-07-01",
+    "end_date": "2026-09-30",
+    "status": "new",
+    "created_at": "2026-06-04T08:00:00Z",
+    "supplier_responses": []
+  },
+  {
+    "id": "rfq-017",
+    "contractor_id": "con-003",
+    "category": "machinery",
+    "subcategory": "generator",
+    "description": "Need 2 large diesel generators (500+ kVA) for temporary power supply during construction of a data centre in Sharjah. 4-month hire.",
+    "quantity": 2,
+    "country": "UAE",
+    "city": "Sharjah",
+    "region": "Sharjah",
+    "start_date": "2026-06-20",
+    "end_date": "2026-10-20",
+    "status": "confirmed",
+    "created_at": "2026-05-28T14:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-017-a",
+        "supplier_id": "sup-013",
+        "resource_id": "res-018",
+        "unit_price_usd": 290,
+        "total_price_usd": 70400,
+        "currency": "USD",
+        "notes": "CAT C18, 600 kVA each. Fuel monitoring system included. Delivery to Sharjah.",
+        "submitted_at": "2026-05-29T11:00:00Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "sr-017-b",
+        "supplier_id": "sup-003",
+        "resource_id": "res-018",
+        "unit_price_usd": 310,
+        "total_price_usd": 75200,
+        "currency": "USD",
+        "notes": "Cummins C550, 550 kVA each. 24hr technical support included.",
+        "submitted_at": "2026-05-30T09:00:00Z",
+        "status": "rejected"
+      }
+    ]
+  },
+  {
+    "id": "rfq-018",
+    "contractor_id": "con-002",
+    "category": "vehicles",
+    "subcategory": "refrigerated_van",
+    "description": "Need 2 refrigerated vans for daily supply of perishable construction consumables (resins, chemicals) to a remote project site near Tabuk.",
+    "quantity": 2,
+    "country": "Saudi Arabia",
+    "city": "Tabuk",
+    "region": "Tabuk Region",
+    "start_date": "2026-06-22",
+    "end_date": "2026-09-22",
+    "status": "accepted",
+    "created_at": "2026-05-25T11:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-018-a",
+        "supplier_id": "sup-015",
+        "resource_id": "res-032",
+        "unit_price_usd": 130,
+        "total_price_usd": 23400,
+        "currency": "USD",
+        "notes": "Ford Transit Refrigerated 2024. GPS and real-time temperature monitoring.",
+        "submitted_at": "2026-05-26T08:00:00Z",
+        "status": "accepted"
+      }
+    ]
+  },
+  {
+    "id": "rfq-019",
+    "contractor_id": "con-006",
+    "category": "manpower",
+    "subcategory": "crane_operator",
+    "description": "Need 2 certified tower crane operators for a residential high-rise in Doha. CPCS or equivalent certification required. 1 year contract.",
+    "quantity": 2,
+    "country": "Qatar",
+    "city": "Doha",
+    "region": "Doha",
+    "start_date": "2026-07-15",
+    "end_date": "2027-07-15",
+    "status": "completed",
+    "created_at": "2025-06-20T08:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-019-a",
+        "supplier_id": "sup-001",
+        "resource_id": "res-005",
+        "unit_price_usd": 90,
+        "total_price_usd": 65700,
+        "currency": "USD",
+        "notes": "CPCS A60 certified operators. Qatar work permit assistance included.",
+        "submitted_at": "2025-06-22T09:00:00Z",
+        "status": "completed"
+      }
+    ]
+  },
+  {
+    "id": "rfq-020",
+    "contractor_id": "con-004",
+    "category": "shipping",
+    "subcategory": "bulk_cargo",
+    "description": "Need to ship 500 tonnes of washed sand and 200 tonnes of crushed aggregate from a quarry in UAE to a construction project in Jahra, Kuwait.",
+    "quantity": 700,
+    "country": "Kuwait",
+    "city": "Jahra",
+    "region": "Jahra Governorate",
+    "start_date": "2026-07-01",
+    "end_date": "2026-07-15",
+    "status": "supplier_responded",
+    "created_at": "2026-06-02T12:00:00Z",
+    "supplier_responses": [
+      {
+        "id": "sr-020-a",
+        "supplier_id": "sup-008",
+        "resource_id": "res-036",
+        "unit_price_usd": 17,
+        "total_price_usd": 11900,
+        "currency": "USD",
+        "notes": "UAE-Kuwait sea+land route. Port handling at Shuwaikh included. 14-day delivery.",
+        "submitted_at": "2026-06-03T10:00:00Z",
+        "status": "pending"
+      },
+      {
+        "id": "sr-020-b",
+        "supplier_id": "sup-011",
+        "resource_id": "res-036",
+        "unit_price_usd": 19,
+        "total_price_usd": 13300,
+        "currency": "USD",
+        "notes": "Via Salalah transhipment. Full customs clearance included. 18-day delivery.",
+        "submitted_at": "2026-06-03T15:00:00Z",
+        "status": "pending"
+      }
+    ]
+  }
+]

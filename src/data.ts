@@ -1,9 +1,9 @@
-import rfqs from '../../shared/mock/rfqs.json'
-import jobs from '../../shared/mock/jobs.json'
-import suppliers from '../../shared/mock/suppliers.json'
-import contractors from '../../shared/mock/contractors.json'
-import notifications from '../../shared/mock/notifications.json'
-import taxonomy from '../../shared/mock/taxonomy.json'
+import rfqs from './mock/rfqs.json'
+import jobs from './mock/jobs.json'
+import suppliers from './mock/suppliers.json'
+import contractors from './mock/contractors.json'
+import notifications from './mock/notifications.json'
+import taxonomy from './mock/taxonomy.json'
 
 export const rfqsData = rfqs
 export const jobsData = jobs

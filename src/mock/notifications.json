@@ -1,0 +1,227 @@
+[
+  {
+    "id": "notif-001",
+    "user_id": "con-001",
+    "type": "RFQ_BROADCAST",
+    "title": "RFQ Broadcast Sent",
+    "message": "Your RFQ for 10 Masons in Muscat has been broadcast to 8 matching suppliers.",
+    "read": false,
+    "created_at": "2026-06-03T09:15:30Z"
+  },
+  {
+    "id": "notif-002",
+    "user_id": "sup-001",
+    "type": "RFQ_BROADCAST",
+    "title": "New RFQ Available — Mason (Muscat)",
+    "message": "A new RFQ has been broadcast for 10 Masons in Muscat, Oman starting July 5. Review and respond now.",
+    "read": true,
+    "created_at": "2026-06-03T09:15:31Z"
+  },
+  {
+    "id": "notif-003",
+    "user_id": "con-002",
+    "type": "RFQ_RESPONSE",
+    "title": "2 New Quotes on Your Excavator RFQ",
+    "message": "Gulf Construction Services and Sohar Industrial Supply have submitted quotes for your excavator requirement in Riyadh. Compare offers now.",
+    "read": false,
+    "created_at": "2026-05-30T11:25:00Z"
+  },
+  {
+    "id": "notif-004",
+    "user_id": "con-003",
+    "type": "RFQ_RESPONSE",
+    "title": "Quotes Received — Bus Hire Dubai",
+    "message": "Qatar Construction Group and Abu Dhabi Logistics Group have responded to your bus hire RFQ. Negotiation stage is now open.",
+    "read": true,
+    "created_at": "2026-05-23T14:35:00Z"
+  },
+  {
+    "id": "notif-005",
+    "user_id": "con-004",
+    "type": "RFQ_CONFIRMED",
+    "title": "RFQ Confirmed — Electricians Kuwait",
+    "message": "Your RFQ for 5 electricians in Hawalli has been confirmed with Kuwait Building Solutions. Job starts July 1.",
+    "read": true,
+    "created_at": "2026-05-18T10:05:00Z"
+  },
+  {
+    "id": "notif-006",
+    "user_id": "sup-004",
+    "type": "RFQ_CONFIRMED",
+    "title": "Contract Confirmed — Electricians Hawalli",
+    "message": "Arabian Heights Contracting has confirmed your quote for 5 electricians in Hawalli. Work order generated. Please deploy by July 1.",
+    "read": true,
+    "created_at": "2026-05-18T10:05:01Z"
+  },
+  {
+    "id": "notif-007",
+    "user_id": "con-006",
+    "type": "JOB_COMPLETED",
+    "title": "Job Completed — Tower Crane Lusail",
+    "message": "The tower crane deployment by Emirates Equipment Trading on the Lusail high-rise project has been marked as complete. Please submit your review.",
+    "read": false,
+    "created_at": "2027-07-01T08:00:00Z"
+  },
+  {
+    "id": "notif-008",
+    "user_id": "sup-003",
+    "type": "JOB_COMPLETED",
+    "title": "Job Marked Complete — Lusail Tower Crane",
+    "message": "Crescent Build Group has marked the Lusail tower crane job as complete. Payment will be processed within 5 business days.",
+    "read": false,
+    "created_at": "2027-07-01T08:00:01Z"
+  },
+  {
+    "id": "notif-009",
+    "user_id": "con-006",
+    "type": "REVIEW_REQUEST",
+    "title": "Please Review Emirates Equipment Trading",
+    "message": "How was your experience with Emirates Equipment Trading on the Lusail project? Your rating helps other contractors make better decisions.",
+    "read": false,
+    "created_at": "2027-07-01T09:00:00Z"
+  },
+  {
+    "id": "notif-010",
+    "user_id": "sup-009",
+    "type": "NEW_QUOTE",
+    "title": "Quote Accepted — Oversized Load Khobar",
+    "message": "Desert Storm Projects has accepted your quote of $8,400 for shipping 3 steel trusses to Khobar. Work order is ready to download.",
+    "read": true,
+    "created_at": "2026-06-03T07:05:00Z"
+  },
+  {
+    "id": "notif-011",
+    "user_id": "con-001",
+    "type": "RFQ_BROADCAST",
+    "title": "RFQ Broadcast Sent — Surveyor Nizwa",
+    "message": "Your RFQ for 1 Licensed Surveyor in Nizwa has been broadcast to 5 matching suppliers.",
+    "read": false,
+    "created_at": "2026-06-04T08:05:00Z"
+  },
+  {
+    "id": "notif-012",
+    "user_id": "con-004",
+    "type": "RFQ_RESPONSE",
+    "title": "2 Quotes on Mobile Crane RFQ",
+    "message": "Qatar Construction Group and Kuwait Building Solutions have both submitted quotes for your mobile crane request in Salmiya.",
+    "read": true,
+    "created_at": "2026-05-24T15:35:00Z"
+  },
+  {
+    "id": "notif-013",
+    "user_id": "con-005",
+    "type": "RFQ_CONFIRMED",
+    "title": "Pallet Shipping Confirmed — Muharraq",
+    "message": "Bahrain Technical Services has confirmed your pallet shipment of 50 units to Muharraq. Pickup is scheduled for June 18.",
+    "read": true,
+    "created_at": "2026-06-03T08:10:00Z"
+  },
+  {
+    "id": "notif-014",
+    "user_id": "sup-005",
+    "type": "RFQ_CONFIRMED",
+    "title": "Shipment Confirmed — Muharraq Pallets",
+    "message": "Peninsular Engineering WLL confirmed your pallet shipping quote. Please arrange pickup on June 18 at 08:00.",
+    "read": true,
+    "created_at": "2026-06-03T08:10:01Z"
+  },
+  {
+    "id": "notif-015",
+    "user_id": "con-008",
+    "type": "JOB_COMPLETED",
+    "title": "Job Completed — SUV Hire Abu Dhabi",
+    "message": "Your 6-month SUV hire contract with Abu Dhabi Logistics Group has concluded. Please rate your experience.",
+    "read": false,
+    "created_at": "2026-12-13T08:00:00Z"
+  },
+  {
+    "id": "notif-016",
+    "user_id": "con-007",
+    "type": "RFQ_RESPONSE",
+    "title": "Quote Received — Hazmat Shipping Jubail",
+    "message": "Ahmadi Industrial Equipment Co. has responded to your hazardous materials shipping RFQ. Review their offer.",
+    "read": false,
+    "created_at": "2026-06-02T10:05:00Z"
+  },
+  {
+    "id": "notif-017",
+    "user_id": "sup-013",
+    "type": "NEW_QUOTE",
+    "title": "Your Hazmat Quote Is Under Negotiation",
+    "message": "Star Projects Arabia is reviewing your hazmat shipping quote. Expect a response within 24 hours.",
+    "read": true,
+    "created_at": "2026-06-02T10:10:00Z"
+  },
+  {
+    "id": "notif-018",
+    "user_id": "con-003",
+    "type": "RFQ_CONFIRMED",
+    "title": "Generator Hire Confirmed — Sharjah",
+    "message": "Ahmadi Industrial Equipment has confirmed delivery of 2 generators (600 kVA each) to your Sharjah data centre site on June 20.",
+    "read": true,
+    "created_at": "2026-05-30T11:00:00Z"
+  },
+  {
+    "id": "notif-019",
+    "user_id": "con-006",
+    "type": "RFQ_BROADCAST",
+    "title": "New RFQ Broadcast — Riggers Al Rayyan",
+    "message": "Your RFQ for 4 certified riggers in Al Rayyan, Qatar has been broadcast to 6 qualified suppliers.",
+    "read": false,
+    "created_at": "2026-06-03T14:05:00Z"
+  },
+  {
+    "id": "notif-020",
+    "user_id": "sup-001",
+    "type": "RFQ_BROADCAST",
+    "title": "New RFQ — Riggers (Qatar)",
+    "message": "A new RFQ has been broadcast for 4 LEEA-certified riggers in Al Rayyan, Qatar starting July 15. Respond before the deadline.",
+    "read": false,
+    "created_at": "2026-06-03T14:05:01Z"
+  },
+  {
+    "id": "notif-021",
+    "user_id": "con-002",
+    "type": "RFQ_RESPONSE",
+    "title": "2 Quotes on Bulk Cargo Kuwait RFQ",
+    "message": "Jeddah Heavy Equipment and Salalah Port & Logistics have submitted quotes for your bulk cargo shipment to Jahra, Kuwait.",
+    "read": false,
+    "created_at": "2026-06-03T15:05:00Z"
+  },
+  {
+    "id": "notif-022",
+    "user_id": "con-006",
+    "type": "REVIEW_REQUEST",
+    "title": "Review Gulf Construction Services",
+    "message": "Your crane operator contract with Gulf Construction Services in Doha is complete. Share your feedback to help the community.",
+    "read": false,
+    "created_at": "2027-07-16T08:00:00Z"
+  },
+  {
+    "id": "notif-023",
+    "user_id": "sup-015",
+    "type": "NEW_QUOTE",
+    "title": "Quote Accepted — Refrigerated Vans Tabuk",
+    "message": "Desert Storm Projects has accepted your quote for 2 refrigerated vans to Tabuk. Work order ready. Deployment June 22.",
+    "read": true,
+    "created_at": "2026-05-27T09:05:00Z"
+  },
+  {
+    "id": "notif-024",
+    "user_id": "con-005",
+    "type": "REVIEW_REQUEST",
+    "title": "Rate Your HVAC Technician Quote",
+    "message": "Emirates Equipment Trading submitted a quote for your HVAC technician requirement in Hamad Town. Accept, negotiate, or decline.",
+    "read": false,
+    "created_at": "2026-06-03T08:05:00Z"
+  },
+  {
+    "id": "notif-025",
+    "user_id": "con-001",
+    "type": "JOB_COMPLETED",
+    "title": "Job Completed — Pickup Trucks Sohar",
+    "message": "Your 3-month pickup truck contract for the Sohar road project is nearing end. Renewal or return confirmation required by September 20.",
+    "read": false,
+    "created_at": "2026-09-15T08:00:00Z"
+  }
+]

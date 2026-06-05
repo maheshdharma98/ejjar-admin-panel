@@ -1,0 +1,50 @@
+{
+  "manpower": [
+    {"slug":"mason","label_en":"Mason","label_ar":"بنّاء","synonyms":["bricklayer"]},
+    {"slug":"electrician","label_en":"Electrician","label_ar":"كهربائي","synonyms":["electrical worker"]},
+    {"slug":"welder","label_en":"Welder","label_ar":"لحّام","synonyms":["welding operator"]},
+    {"slug":"plumber","label_en":"Plumber","label_ar":"سبّاك","synonyms":["pipe fitter"]},
+    {"slug":"crane_operator","label_en":"Crane Operator","label_ar":"مشغّل رافعة","synonyms":["crane driver"]},
+    {"slug":"scaffolder","label_en":"Scaffolder","label_ar":"عامل سقالات","synonyms":["scaffold erector"]},
+    {"slug":"painter","label_en":"Painter","label_ar":"دهّان","synonyms":["paint worker"]},
+    {"slug":"carpenter","label_en":"Carpenter","label_ar":"نجّار","synonyms":["woodworker"]},
+    {"slug":"rigger","label_en":"Rigger","label_ar":"مركّب معدات","synonyms":["rigging operator"]},
+    {"slug":"safety_officer","label_en":"Safety Officer","label_ar":"مسؤول السلامة","synonyms":["HSE officer"]},
+    {"slug":"surveyor","label_en":"Surveyor","label_ar":"مساح","synonyms":["land surveyor"]},
+    {"slug":"hvac_tech","label_en":"HVAC Technician","label_ar":"فني تكييف","synonyms":["ac technician"]}
+  ],
+  "machinery": [
+    {"slug":"excavator","label_en":"Excavator","label_ar":"حفّارة","synonyms":["digger"]},
+    {"slug":"tower_crane","label_en":"Tower Crane","label_ar":"رافعة برجية","synonyms":["crane tower"]},
+    {"slug":"mobile_crane","label_en":"Mobile Crane","label_ar":"رافعة متنقلة","synonyms":["crane mobile"]},
+    {"slug":"loader","label_en":"Loader","label_ar":"رافعة شوكية أمامية","synonyms":["front loader"]},
+    {"slug":"compressor","label_en":"Compressor","label_ar":"ضاغط هواء","synonyms":["air compressor"]},
+    {"slug":"generator","label_en":"Generator","label_ar":"مولّد كهربائي","synonyms":["genset"]},
+    {"slug":"forklift","label_en":"Forklift","label_ar":"رافعة شوكية","synonyms":["fork lift"]},
+    {"slug":"concrete_mixer","label_en":"Concrete Mixer","label_ar":"خلاطة خرسانة","synonyms":["cement mixer"]},
+    {"slug":"bulldozer","label_en":"Bulldozer","label_ar":"جرّافة","synonyms":["dozer"]},
+    {"slug":"backhoe","label_en":"Backhoe","label_ar":"حفّارة خلفية","synonyms":["backhoe loader"]}
+  ],
+  "vehicles": [
+    {"slug":"sedan","label_en":"Sedan","label_ar":"سيارة سيدان","synonyms":["car","saloon"]},
+    {"slug":"suv","label_en":"SUV","label_ar":"سيارة دفع رباعي","synonyms":["4x4","jeep"]},
+    {"slug":"pickup","label_en":"Pickup","label_ar":"بيك أب","synonyms":["pick up"]},
+    {"slug":"van","label_en":"Van","label_ar":"فان","synonyms":["cargo van"]},
+    {"slug":"minibus","label_en":"Minibus","label_ar":"ميني باص","synonyms":["coaster"]},
+    {"slug":"bus","label_en":"Bus","label_ar":"حافلة","synonyms":["coach"]},
+    {"slug":"truck","label_en":"Truck","label_ar":"شاحنة","synonyms":["lorry"]},
+    {"slug":"tanker","label_en":"Tanker","label_ar":"صهريج","synonyms":["water tanker"]},
+    {"slug":"flatbed","label_en":"Flatbed Truck","label_ar":"شاحنة مسطحة","synonyms":["flat bed"]},
+    {"slug":"refrigerated_van","label_en":"Refrigerated Van","label_ar":"مركبة مبردة","synonyms":["reefer van"]}
+  ],
+  "shipping": [
+    {"slug":"small_parcel","label_en":"Small Parcel","label_ar":"طرد صغير","synonyms":["parcel"]},
+    {"slug":"large_package","label_en":"Large Package","label_ar":"طرد كبير","synonyms":["large parcel"]},
+    {"slug":"pallet","label_en":"Pallet","label_ar":"منصّة","synonyms":["pallet load"]},
+    {"slug":"bulk_cargo","label_en":"Bulk Cargo","label_ar":"بضاعة سائبة","synonyms":["bulk goods"]},
+    {"slug":"cold_chain","label_en":"Cold Chain","label_ar":"سلسلة التبريد","synonyms":["refrigerated freight"]},
+    {"slug":"hazmat","label_en":"Hazardous Material","label_ar":"مواد خطرة","synonyms":["dangerous goods","DG"]},
+    {"slug":"empty_return","label_en":"Empty Return Trip","label_ar":"رحلة عودة فارغة","synonyms":["backload","return load"]},
+    {"slug":"oversized","label_en":"Oversized Load","label_ar":"حمولة ضخمة","synonyms":["heavy lift","abnormal load"]}
+  ]
+}
