@@ -104,7 +104,7 @@ export default function ContractorsPage() {
           <h1 className="text-xl font-bold text-slate-800">{t('contractors')}</h1>
           <p className="text-slate-500 text-sm">{filtered.length} records</p>
         </div>
-        <button onClick={handleExport} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1A4FBA] text-white text-sm font-medium hover:bg-[#1540a0] transition-colors">
+        <button onClick={handleExport} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#192433] text-white text-sm font-medium hover:bg-[#111b26] transition-colors">
           <Download size={15} />{t('export')}
         </button>
       </div>
@@ -113,13 +113,13 @@ export default function ContractorsPage() {
         <div className="flex flex-wrap gap-3">
           <div className="relative flex-1 min-w-48">
             <Search size={15} className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }} placeholder={t('search') + '...'} className="w-full ps-9 pe-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30" />
+            <input value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }} placeholder={t('search') + '...'} className="w-full ps-9 pe-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30" />
           </div>
-          <select value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30">
+          <select value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#192433]/30">
             <option value="all">{t('status')}: {t('all')}</option>
             {statuses.map((s) => <option key={s} value={s}>{statusLabel(s)}</option>)}
           </select>
-          <select value={countryFilter} onChange={(e) => { setCountryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30">
+          <select value={countryFilter} onChange={(e) => { setCountryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#192433]/30">
             <option value="all">{t('country')}: {t('all')}</option>
             {countries.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
@@ -194,7 +194,7 @@ export default function ContractorsPage() {
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">‹</button>
             {[...Array(Math.min(5, totalPages))].map((_, i) => {
               const p = Math.max(1, Math.min(page - 2, totalPages - 4)) + i
-              return <button key={p} onClick={() => setPage(p)} className={cn('w-8 h-8 rounded text-sm', p === page ? 'bg-[#1A4FBA] text-white' : 'text-slate-500 hover:bg-slate-100')}>{p}</button>
+              return <button key={p} onClick={() => setPage(p)} className={cn('w-8 h-8 rounded text-sm', p === page ? 'bg-[#192433] text-white' : 'text-slate-500 hover:bg-slate-100')}>{p}</button>
             })}
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">›</button>
             <button onClick={() => setPage(totalPages)} disabled={page === totalPages} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">»</button>
@@ -231,7 +231,7 @@ export default function ContractorsPage() {
             </p>
             <div className="flex gap-2 justify-end">
               <button onClick={() => setDialog(null)} className="px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium hover:bg-slate-50">{t('cancel')}</button>
-              <button onClick={confirmDialog} className={cn('px-4 py-2 rounded-lg text-sm font-medium text-white', dialog.type === 'block' ? 'bg-red-600 hover:bg-red-700' : 'bg-[#1A4FBA] hover:bg-[#1540a0]')}>
+              <button onClick={confirmDialog} className={cn('px-4 py-2 rounded-lg text-sm font-medium text-white', dialog.type === 'block' ? 'bg-red-600 hover:bg-red-700' : 'bg-[#192433] hover:bg-[#111b26]')}>
                 {t('confirm')}
               </button>
             </div>

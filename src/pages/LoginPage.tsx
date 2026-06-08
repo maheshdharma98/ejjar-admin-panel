@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Eye, EyeOff, Shield } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 
@@ -41,11 +41,8 @@ export default function LoginPage() {
 
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1A4FBA] mb-4">
-            <Shield size={28} className="text-white" />
-          </div>
-          <h1 className="text-2xl font-bold text-white">EJJAR</h1>
-          <p className="text-slate-400 text-sm mt-1">{t('admin_panel')}</p>
+          <img src="/logo_black.svg" alt="EJJAR" style={{ height: '80px', width: 'auto', display: 'block', margin: '0 auto 24px' }} />
+          <p className="text-slate-400 text-sm">{t('admin_panel')}</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-2xl p-8">
@@ -60,7 +57,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA] focus:border-transparent"
+                className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433] focus:border-transparent"
                 placeholder="admin@ejjar.com"
                 required
               />
@@ -75,7 +72,7 @@ export default function LoginPage() {
                   type={showPw ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2.5 pe-10 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA] focus:border-transparent"
+                  className="w-full px-4 py-2.5 pe-10 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433] focus:border-transparent"
                   placeholder="••••••••"
                   required
                 />
@@ -96,7 +93,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-lg bg-[#1A4FBA] text-white font-semibold text-sm hover:bg-[#1540a0] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-3 rounded-lg bg-[#192433] text-white font-semibold text-sm hover:bg-[#111b26] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? t('loading') : t('sign_in')}
             </button>

@@ -22,7 +22,7 @@ export default function Navbar() {
 
       <button
         onClick={startTour}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-[#1A4FBA] hover:bg-blue-50 transition-colors font-medium border border-[#1A4FBA]/20"
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-[#192433] hover:bg-blue-50 transition-colors font-medium border border-[#192433]/20"
         title="Start Demo Tour"
       >
         <Compass size={15} />
@@ -30,7 +30,7 @@ export default function Navbar() {
       </button>
 
       <div className="flex items-center gap-2 text-sm" data-tour="settings">
-        <div className="w-8 h-8 rounded-full bg-[#1A4FBA] flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full bg-[#192433] flex items-center justify-center">
           <Shield size={14} className="text-white" />
         </div>
         <div className="leading-tight hidden sm:block">

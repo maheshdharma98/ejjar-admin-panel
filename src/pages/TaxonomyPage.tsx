@@ -149,7 +149,7 @@ export default function TaxonomyPage() {
                   {isSuperAdmin && (
                     <button
                       onClick={(e) => { e.stopPropagation(); setAddDialog({ cat }); setNewItem({ slug: '', label_en: '', label_ar: '', synonyms: [] }) }}
-                      className="p-1 rounded-lg hover:bg-[#1A4FBA]/10 text-[#1A4FBA] transition-colors"
+                      className="p-1 rounded-lg hover:bg-[#192433]/10 text-[#192433] transition-colors"
                     >
                       <Plus size={14} />
                     </button>
@@ -161,7 +161,7 @@ export default function TaxonomyPage() {
                       <div
                         key={item.slug}
                         onClick={() => selectItem(cat, item)}
-                        className={cn('group flex items-center justify-between px-8 py-2 cursor-pointer hover:bg-slate-50 transition-colors text-sm', selected?.cat === cat && selected.item.slug === item.slug ? 'bg-[#1A4FBA]/5 text-[#1A4FBA] font-medium' : 'text-slate-600')}
+                        className={cn('group flex items-center justify-between px-8 py-2 cursor-pointer hover:bg-slate-50 transition-colors text-sm', selected?.cat === cat && selected.item.slug === item.slug ? 'bg-[#192433]/5 text-[#192433] font-medium' : 'text-slate-600')}
                       >
                         <span>{item.label_en}</span>
                         {isSuperAdmin && (
@@ -208,7 +208,7 @@ export default function TaxonomyPage() {
                       value={editItem.label_en}
                       onChange={(e) => setEditItem({ ...editItem, label_en: e.target.value })}
                       disabled={!isSuperAdmin}
-                      className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 disabled:bg-slate-50 disabled:text-slate-500"
+                      className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 disabled:bg-slate-50 disabled:text-slate-500"
                     />
                   </div>
                   <div>
@@ -218,7 +218,7 @@ export default function TaxonomyPage() {
                       value={editItem.label_ar}
                       onChange={(e) => setEditItem({ ...editItem, label_ar: e.target.value })}
                       disabled={!isSuperAdmin}
-                      className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 disabled:bg-slate-50 text-right"
+                      className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 disabled:bg-slate-50 text-right"
                     />
                   </div>
                   <div>
@@ -233,7 +233,7 @@ export default function TaxonomyPage() {
                     <label className="block text-xs font-semibold text-slate-500 uppercase mb-1.5">Synonyms</label>
                     <div className="flex flex-wrap gap-2 mb-2">
                       {editItem.synonyms.map((s) => (
-                        <span key={s} className="flex items-center gap-1 px-2.5 py-1 bg-[#1A4FBA]/10 text-[#1A4FBA] rounded-full text-xs font-medium">
+                        <span key={s} className="flex items-center gap-1 px-2.5 py-1 bg-[#192433]/10 text-[#192433] rounded-full text-xs font-medium">
                           {s}
                           {isSuperAdmin && (
                             <button onClick={() => removeSynonym(s)} className="hover:text-red-500 transition-colors">
@@ -250,7 +250,7 @@ export default function TaxonomyPage() {
                           onChange={(e) => setSynonymInput(e.target.value)}
                           onKeyDown={(e) => e.key === 'Enter' && addSynonym()}
                           placeholder="Add synonym…"
-                          className="flex-1 px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30"
+                          className="flex-1 px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30"
                         />
                         <button onClick={addSynonym} className="px-3 py-2 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 text-sm transition-colors">
                           <Plus size={15} />
@@ -267,7 +267,7 @@ export default function TaxonomyPage() {
                     />
                   </div>
                   {isSuperAdmin && (
-                    <button onClick={handleSave} className="w-full py-3 rounded-lg bg-[#1A4FBA] text-white text-sm font-semibold hover:bg-[#1540a0] transition-colors">
+                    <button onClick={handleSave} className="w-full py-3 rounded-lg bg-[#192433] text-white text-sm font-semibold hover:bg-[#111b26] transition-colors">
                       {t('save')}
                     </button>
                   )}
@@ -301,25 +301,25 @@ export default function TaxonomyPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Slug</label>
-                <input value={newItem.slug} onChange={(e) => setNewItem({ ...newItem, slug: e.target.value })} placeholder="e.g. steel_fixer" className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30" />
+                <input value={newItem.slug} onChange={(e) => setNewItem({ ...newItem, slug: e.target.value })} placeholder="e.g. steel_fixer" className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">English Label</label>
-                <input value={newItem.label_en} onChange={(e) => setNewItem({ ...newItem, label_en: e.target.value })} placeholder="e.g. Steel Fixer" className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30" />
+                <input value={newItem.label_en} onChange={(e) => setNewItem({ ...newItem, label_en: e.target.value })} placeholder="e.g. Steel Fixer" className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Arabic Label</label>
-                <input dir="rtl" value={newItem.label_ar} onChange={(e) => setNewItem({ ...newItem, label_ar: e.target.value })} placeholder="مثبت الحديد" className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 text-right" />
+                <input dir="rtl" value={newItem.label_ar} onChange={(e) => setNewItem({ ...newItem, label_ar: e.target.value })} placeholder="مثبت الحديد" className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 text-right" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Synonyms</label>
                 <div className="flex gap-2">
-                  <input value={newSynInput} onChange={(e) => setNewSynInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && newSynInput.trim()) { setNewItem({ ...newItem, synonyms: [...newItem.synonyms, newSynInput.trim()] }); setNewSynInput('') } }} placeholder="Add synonym…" className="flex-1 px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30" />
+                  <input value={newSynInput} onChange={(e) => setNewSynInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && newSynInput.trim()) { setNewItem({ ...newItem, synonyms: [...newItem.synonyms, newSynInput.trim()] }); setNewSynInput('') } }} placeholder="Add synonym…" className="flex-1 px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30" />
                   <button onClick={() => { if (newSynInput.trim()) { setNewItem({ ...newItem, synonyms: [...newItem.synonyms, newSynInput.trim()] }); setNewSynInput('') } }} className="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors"><Plus size={15} /></button>
                 </div>
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   {newItem.synonyms.map((s) => (
-                    <span key={s} className="flex items-center gap-1 px-2 py-0.5 bg-[#1A4FBA]/10 text-[#1A4FBA] rounded-full text-xs">
+                    <span key={s} className="flex items-center gap-1 px-2 py-0.5 bg-[#192433]/10 text-[#192433] rounded-full text-xs">
                       {s}<button onClick={() => setNewItem({ ...newItem, synonyms: newItem.synonyms.filter((x) => x !== s) })}><X size={10} /></button>
                     </span>
                   ))}
@@ -328,7 +328,7 @@ export default function TaxonomyPage() {
             </div>
             <div className="flex gap-2 justify-end mt-5">
               <button onClick={() => setAddDialog(null)} className="px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium hover:bg-slate-50">{t('cancel')}</button>
-              <button onClick={handleAdd} disabled={!newItem.slug || !newItem.label_en} className="px-4 py-2 rounded-lg bg-[#1A4FBA] text-white text-sm font-medium hover:bg-[#1540a0] disabled:opacity-50">{t('add')}</button>
+              <button onClick={handleAdd} disabled={!newItem.slug || !newItem.label_en} className="px-4 py-2 rounded-lg bg-[#192433] text-white text-sm font-medium hover:bg-[#111b26] disabled:opacity-50">{t('add')}</button>
             </div>
           </div>
         </div>

@@ -54,9 +54,9 @@ export default function DashboardPage() {
       count: manpowerCount,
       trend: '+12%',
       trendPositive: true,
-      dot: '#1A4FBA',
-      bg: '#F8FAFF',
-      sparkStroke: '#1A4FBA',
+      dot: '#192433',
+      bg: '#EEF1F5',
+      sparkStroke: '#192433',
       sparkData: generateSparkline(manpowerCount || 5),
     },
     {
@@ -103,7 +103,7 @@ export default function DashboardPage() {
     .slice(0, 10)
 
   const kpis = [
-    { label: t('total_rfqs'), value: totalRFQs, icon: FileText, trend: +12, color: 'bg-blue-50 text-[#1A4FBA]' },
+    { label: t('total_rfqs'), value: totalRFQs, icon: FileText, trend: +12, color: 'bg-[#192433]/10 text-[#192433]' },
     { label: t('active_jobs'), value: activeJobs, icon: Briefcase, trend: +5, color: 'bg-emerald-50 text-emerald-600' },
     { label: t('total_suppliers'), value: totalSuppliers, icon: Building2, trend: +3, color: 'bg-violet-50 text-violet-600' },
     { label: t('total_contractors'), value: totalContractors, icon: Users, trend: -2, color: 'bg-amber-50 text-amber-600' },
@@ -201,13 +201,13 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-3 h-3.5 bg-gray-100 rounded-full overflow-hidden flex">
-            <div style={{ width: `${inProgressPercent}%`, background: '#1A4FBA' }} />
+            <div style={{ width: `${inProgressPercent}%`, background: '#192433' }} />
             <div style={{ width: `${completedPercent}%`, background: '#22C55E' }} />
           </div>
 
           <div className="flex justify-between mt-4">
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-sm bg-[#1A4FBA] flex-shrink-0" />
+              <span className="w-2 h-2 rounded-sm bg-[#192433] flex-shrink-0" />
               <span className="text-sm text-gray-600">In Progress</span>
               <span className="text-sm font-semibold text-gray-900 ml-1">{inProgressCount}</span>
             </div>
@@ -218,12 +218,12 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[#F8FAFC] rounded-lg p-3 mt-6 flex justify-between items-center">
+          <div className="bg-[#192433] rounded-lg p-3 mt-6 flex justify-between items-center">
             <div>
-              <p className="text-xs text-gray-500">Completion Rate</p>
-              <p className="text-2xl font-bold text-[#22C55E] mt-0.5">{completionRate}%</p>
+              <p className="text-xs text-slate-300">Completion Rate</p>
+              <p className="text-2xl font-bold text-[#BB8D5A] mt-0.5">{completionRate}%</p>
             </div>
-            <span className="bg-green-50 text-green-700 rounded-full px-2 py-1 text-xs font-medium">
+            <span className="bg-[#BB8D5A]/20 text-[#BB8D5A] rounded-full px-2 py-1 text-xs font-medium">
               +5% vs last month
             </span>
           </div>

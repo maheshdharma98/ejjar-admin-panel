@@ -115,7 +115,7 @@ export default function RFQsPage() {
           <h1 className="text-xl font-bold text-slate-800">{t('rfqs')}</h1>
           <p className="text-slate-500 text-sm">{filtered.length} records</p>
         </div>
-        <button onClick={handleExport} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1A4FBA] text-white text-sm font-medium hover:bg-[#1540a0] transition-colors">
+        <button onClick={handleExport} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#192433] text-white text-sm font-medium hover:bg-[#111b26] transition-colors">
           <Download size={15} />
           {t('export')}
         </button>
@@ -128,23 +128,23 @@ export default function RFQsPage() {
             <input
               value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }}
               placeholder={t('search') + '...'}
-              className="w-full ps-9 pe-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30"
+              className="w-full ps-9 pe-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30"
             />
           </div>
-          <select value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 bg-white">
+          <select value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white">
             <option value="all">{t('status')}: {t('all')}</option>
             {statuses.map((s) => <option key={s} value={s}>{statusLabel(s)}</option>)}
           </select>
-          <select value={categoryFilter} onChange={(e) => { setCategoryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 bg-white">
+          <select value={categoryFilter} onChange={(e) => { setCategoryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white">
             <option value="all">{t('category')}: {t('all')}</option>
             {categories.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
-          <select value={countryFilter} onChange={(e) => { setCountryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 bg-white">
+          <select value={countryFilter} onChange={(e) => { setCountryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white">
             <option value="all">{t('country')}: {t('all')}</option>
             {countries.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
-          <input type="date" value={dateFrom} onChange={(e) => { setDateFrom(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 bg-white" />
-          <input type="date" value={dateTo} onChange={(e) => { setDateTo(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A4FBA]/30 bg-white" />
+          <input type="date" value={dateFrom} onChange={(e) => { setDateFrom(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white" />
+          <input type="date" value={dateTo} onChange={(e) => { setDateTo(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white" />
           {hasFilters && (
             <button onClick={resetFilters} className="flex items-center gap-1 px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-500 hover:bg-slate-50">
               <X size={13} /> Clear
@@ -212,7 +212,7 @@ export default function RFQsPage() {
             {[...Array(Math.min(5, totalPages))].map((_, i) => {
               const p = Math.max(1, Math.min(page - 2, totalPages - 4)) + i
               return (
-                <button key={p} onClick={() => setPage(p)} className={cn('w-8 h-8 rounded text-sm', p === page ? 'bg-[#1A4FBA] text-white' : 'text-slate-500 hover:bg-slate-100')}>
+                <button key={p} onClick={() => setPage(p)} className={cn('w-8 h-8 rounded text-sm', p === page ? 'bg-[#192433] text-white' : 'text-slate-500 hover:bg-slate-100')}>
                   {p}
                 </button>
               )

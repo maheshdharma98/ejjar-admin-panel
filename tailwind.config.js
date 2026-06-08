@@ -7,8 +7,10 @@ export default {
         sans: ['Cairo', 'sans-serif'],
       },
       colors: {
-        primary: '#1A4FBA',
+        primary: '#192433',
         sidebar: '#0F172A',
+        'ejjar-navy': '#192433',
+        'ejjar-gold': '#BB8D5A',
       },
     },
   },

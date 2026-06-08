@@ -24,15 +24,8 @@ export default function Sidebar() {
   return (
     <aside className="fixed top-0 start-0 h-full w-60 bg-[#0F172A] flex flex-col z-30">
       <div className="px-6 py-5 border-b border-slate-700" data-tour="welcome">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#1A4FBA] flex items-center justify-center">
-            <span className="text-white font-bold text-sm">E</span>
-          </div>
-          <div>
-            <p className="text-white font-bold text-sm leading-tight">EJJAR</p>
-            <p className="text-slate-400 text-xs">{t('admin_panel')}</p>
-          </div>
-        </div>
+        <img src="/logo_white.svg" alt="EJJAR Admin" style={{ height: '48px', width: 'auto', marginBottom: '8px' }} />
+        <p className="text-slate-400 text-xs">{t('admin_panel')}</p>
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto scrollbar-thin">
@@ -44,7 +37,7 @@ export default function Sidebar() {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-[#1A4FBA] text-white'
+                  ? 'bg-[#192433] text-white'
                   : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
               }`
             }
