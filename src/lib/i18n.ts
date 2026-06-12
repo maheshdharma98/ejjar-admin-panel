@@ -46,6 +46,7 @@ const resources = {
       password: 'Password',
       sign_in: 'Sign In',
       admin_panel: 'Admin Panel',
+      tour: 'Tour',
     },
   },
   ar: {
@@ -92,6 +93,7 @@ const resources = {
       password: 'كلمة المرور',
       sign_in: 'دخول',
       admin_panel: 'لوحة الإدارة',
+      tour: 'جولة',
     },
   },
 }

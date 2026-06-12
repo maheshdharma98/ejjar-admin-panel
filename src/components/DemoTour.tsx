@@ -1,8 +1,9 @@
 import { Joyride, EVENTS, STATUS, ACTIONS } from 'react-joyride'
 import type { EventData, Controls, Step } from 'react-joyride'
 import { useTourStore } from '@/stores/tourStore'
+import { useTranslation } from 'react-i18next'
 
-const steps: Step[] = [
+const stepsEn: Step[] = [
   {
     target: '[data-tour="welcome"]',
     title: '👋 Welcome to EJJAR Admin',
@@ -61,8 +62,70 @@ const steps: Step[] = [
   },
 ]
 
+const stepsAr: Step[] = [
+  {
+    target: '[data-tour="welcome"]',
+    title: '👋 مرحباً بك في لوحة إدارة EJJAR',
+    content: 'تتيح لوحة الإدارة الإشراف الكامل على منصة EJJAR — الموردين والمقاولين وطلبات العروض والتصنيف والإشعارات من مكان واحد.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="nav-dashboard"]',
+    title: '📊 لوحة التحكم',
+    content: 'مقاييس المنصة في الوقت الفعلي — طلبات العروض النشطة والموردين والمقاولين والإيرادات دفعةً واحدة.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="nav-suppliers"]',
+    title: '🏗 الموردون',
+    content: 'تحقق من الموردين أو احظرهم أو غيّر مستوى اشتراكهم على المنصة.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="nav-contractors"]',
+    title: '👷 المقاولون',
+    content: 'إدارة حسابات المقاولين — عرض النشاط والحالة وتفاصيل الحساب.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="nav-rfqs"]',
+    title: '📋 طلبات العروض',
+    content: 'متابعة جميع طلبات العروض على المنصة بمختلف حالاتها — جديدة، مُستجاب لها، مؤكدة، ومكتملة.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="nav-taxonomy"]',
+    title: '🏷 التصنيف',
+    content: 'أضف فئات وفئات فرعية جديدة يستخدمها المقاولون عند نشر طلبات العروض.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="nav-notifications"]',
+    title: '🔔 الإشعارات',
+    content: 'عرض سجلات الإشعارات والقوالب المُرسلة إلى الموردين والمقاولين.',
+    placement: 'right',
+    skipBeacon: true,
+  },
+  {
+    target: '[data-tour="settings"]',
+    title: '⚙️ الإعدادات',
+    content: 'إعدادات المنصة — إدارة حسابات المشرفين والأدوار وتفضيلات النظام.',
+    placement: 'bottom',
+    skipBeacon: true,
+  },
+]
+
 export default function DemoTour() {
   const { isRunning, stepIndex, stopTour, setStepIndex } = useTourStore()
+  const { i18n } = useTranslation()
+  const isAr = i18n.language === 'ar'
+  const steps = isAr ? stepsAr : stepsEn
 
   const handleEvent = (data: EventData, _controls: Controls) => {
     const { status, type, index, action } = data
@@ -78,18 +141,19 @@ export default function DemoTour() {
 
   return (
     <Joyride
+      key={i18n.language}
       steps={steps}
       run={isRunning}
       stepIndex={stepIndex}
       continuous
+      showProgress
+      showSkipButton
       scrollToFirstStep
       onEvent={handleEvent}
       options={{
         primaryColor: '#192433',
         overlayColor: 'rgba(15, 23, 42, 0.55)',
         zIndex: 10000,
-        showProgress: true,
-        buttons: ['back', 'primary', 'skip'],
         width: 340,
       }}
       styles={{
@@ -97,6 +161,8 @@ export default function DemoTour() {
           borderRadius: 12,
           padding: '20px 24px',
           boxShadow: '0 20px 60px rgba(0,0,0,0.18)',
+          direction: isAr ? 'rtl' : 'ltr',
+          textAlign: isAr ? 'right' : 'left',
         },
         tooltipTitle: {
           fontSize: 15,
@@ -128,7 +194,14 @@ export default function DemoTour() {
           fontSize: 12,
         },
       }}
-      locale={{
+      locale={isAr ? {
+        back: 'السابق',
+        close: 'إغلاق',
+        last: 'إنهاء',
+        next: 'التالي',
+        open: 'فتح',
+        skip: 'تخطي الجولة',
+      } : {
         back: 'Back',
         close: 'Close',
         last: 'Finish',

@@ -1,28 +1,52 @@
+// EJJAR Admin Panel
+// EJJAR Design System v1.0
+// Tokens: tailwind.config.js → brand / surface / border / text / status
 import { useState, useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Search, Download, ChevronUp, ChevronDown, X, Eye } from 'lucide-react'
-import { rfqsData, contractorsData, suppliersData } from '@/data'
-import { cn, formatDate, formatDateTime, statusLabel, STATUS_COLORS, downloadCSV } from '@/lib/utils'
+import {
+  ADMIN_RFQS,
+  getField,
+  formatOMR,
+} from '../adminDemoData'
+import { cn, downloadCSV } from '@/lib/utils'
+import { usePageMeta } from '@/stores/pageStore'
+import StatusBadge from '@/components/ui/StatusBadge'
+import CategoryChip from '@/components/ui/CategoryChip'
+import EmptyState from '@/components/ui/EmptyState'
 
-type RFQ = typeof rfqsData[0]
+type RFQ = typeof ADMIN_RFQS[0]
 type SortKey = string
 type SortDir = 'asc' | 'desc'
 
-const PAGE_SIZE = 20
+function statusLabelAr(status: string): string {
+  const labels: Record<string, string> = {
+    negotiating: 'قيد التفاوض',
+    receiving_quotes: 'استلام عروض',
+    broadcasted: 'تم البث',
+    accepted: 'مقبول',
+    rejected: 'مرفوض',
+  }
+  return labels[status] || status
+}
 
 export default function RFQsPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language === 'ar' ? 'ar' : 'en'
+  usePageMeta(
+    lang === 'ar' ? 'إدارة طلبات العروض' : 'RFQ Management',
+    lang === 'ar' ? `${ADMIN_RFQS.length} طلبات · 🇴🇲 عُمان` : `${ADMIN_RFQS.length} RFQs · 🇴🇲 Oman`
+  )
+
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
-  const [categoryFilter, setCategoryFilter] = useState('all')
-  const [countryFilter, setCountryFilter] = useState('all')
-  const [dateFrom, setDateFrom] = useState('')
-  const [dateTo, setDateTo] = useState('')
-  const [sortKey, setSortKey] = useState<SortKey>('created_at')
+  const [sortKey, setSortKey] = useState<SortKey>('date')
   const [sortDir, setSortDir] = useState<SortDir>('desc')
   const [page, setPage] = useState(1)
   const [selected, setSelected] = useState<RFQ | null>(null)
+
+  const PAGE_SIZE = 20
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 600)
@@ -35,42 +59,33 @@ export default function RFQsPage() {
     return () => document.removeEventListener('keydown', handler)
   }, [])
 
-  const contractorMap = useMemo(() => Object.fromEntries((contractorsData as {id:string;name:string}[]).map((c) => [c.id, c.name])), [])
-  const supplierMap = useMemo(() => Object.fromEntries((suppliersData as {id:string;name:string}[]).map((s) => [s.id, s.name])), [])
-
-  const statuses = useMemo(() => [...new Set<string>(rfqsData.map((r: RFQ) => r.status))], [])
-  const categories = useMemo(() => [...new Set<string>(rfqsData.map((r: RFQ) => r.category))], [])
-  const countries = useMemo(() => [...new Set<string>(rfqsData.map((r: RFQ) => r.country))], [])
+  const statuses = useMemo(() => [...new Set<string>(ADMIN_RFQS.map((r) => r.status))], [])
 
   const filtered = useMemo(() => {
-    let data = rfqsData as RFQ[]
+    let data = ADMIN_RFQS as RFQ[]
     if (search) {
       const q = search.toLowerCase()
       data = data.filter(
         (r) =>
           r.id.toLowerCase().includes(q) ||
-          (contractorMap[r.contractor_id] || '').toLowerCase().includes(q) ||
           r.category.toLowerCase().includes(q) ||
           r.subcategory.toLowerCase().includes(q) ||
           r.city.toLowerCase().includes(q) ||
-          r.country.toLowerCase().includes(q)
+          r.contractor.toLowerCase().includes(q) ||
+          r.contractorCompany.toLowerCase().includes(q)
       )
     }
     if (statusFilter !== 'all') data = data.filter((r) => r.status === statusFilter)
-    if (categoryFilter !== 'all') data = data.filter((r) => r.category === categoryFilter)
-    if (countryFilter !== 'all') data = data.filter((r) => r.country === countryFilter)
-    if (dateFrom) data = data.filter((r) => r.created_at >= dateFrom)
-    if (dateTo) data = data.filter((r) => r.created_at <= dateTo + 'T23:59:59Z')
     if (sortKey) {
       data = [...data].sort((a, b) => {
-        const av = (a as Record<string, unknown>)[sortKey]
-        const bv = (b as Record<string, unknown>)[sortKey]
+        const av = (a as unknown as Record<string, unknown>)[sortKey]
+        const bv = (b as unknown as Record<string, unknown>)[sortKey]
         const res = String(av) < String(bv) ? -1 : String(av) > String(bv) ? 1 : 0
         return sortDir === 'asc' ? res : -res
       })
     }
     return data
-  }, [search, statusFilter, categoryFilter, countryFilter, dateFrom, dateTo, sortKey, sortDir, contractorMap])
+  }, [search, statusFilter, sortKey, sortDir])
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const pageData = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
@@ -83,117 +98,143 @@ export default function RFQsPage() {
 
   const SortIcon = ({ k }: { k: SortKey }) =>
     sortKey === k ? (
-      sortDir === 'asc' ? <ChevronUp size={13} /> : <ChevronDown size={13} />
+      sortDir === 'asc' ? <ChevronUp size={11} /> : <ChevronDown size={11} />
     ) : (
-      <ChevronDown size={13} className="opacity-30" />
+      <ChevronDown size={11} className="opacity-30" />
     )
 
   const handleExport = () => {
     const rows = [
-      ['ID', 'Contractor', 'Category', 'Subcategory', 'Country', 'City', 'Status', 'Quantity', 'Created'],
+      ['ID', 'Contractor', 'Category', 'Subcategory', 'City', 'Country', 'Budget Min', 'Budget Max', 'Status', 'Date'],
       ...filtered.map((r) => [
-        r.id, contractorMap[r.contractor_id] || r.contractor_id,
-        r.category, r.subcategory, r.country, r.city, r.status, String(r.quantity), r.created_at,
+        r.id, r.contractorCompany, r.category, r.subcategory, r.city, r.country,
+        String(r.budgetMin), String(r.budgetMax), r.status, r.date,
       ]),
     ]
     downloadCSV('rfqs.csv', rows)
   }
 
-  const resetFilters = () => {
-    setSearch(''); setStatusFilter('all'); setCategoryFilter('all')
-    setCountryFilter('all'); setDateFrom(''); setDateTo(''); setPage(1)
-  }
-
-  const hasFilters = search || statusFilter !== 'all' || categoryFilter !== 'all' || countryFilter !== 'all' || dateFrom || dateTo
-
-  if (loading) return <SkeletonTable cols={8} />
+  if (loading) return <SkeletonTable />
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">{t('rfqs')}</h1>
-          <p className="text-slate-500 text-sm">{filtered.length} records</p>
-        </div>
-        <button onClick={handleExport} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#192433] text-white text-sm font-medium hover:bg-[#111b26] transition-colors">
-          <Download size={15} />
-          {t('export')}
-        </button>
-      </div>
-
-      <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4">
-        <div className="flex flex-wrap gap-3">
-          <div className="relative flex-1 min-w-48">
-            <Search size={15} className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" />
+    <>
+      {/* Filter bar */}
+      <div className="bg-surface-card border border-border-card rounded-[14px] p-4 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div className="flex flex-wrap gap-3 items-center">
+          <div className="relative flex-1 min-w-[180px]">
+            <Search size={13} className="absolute start-3 top-1/2 -translate-y-1/2 text-brand-skyblue" />
             <input
-              value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }}
+              value={search}
+              onChange={(e) => { setSearch(e.target.value); setPage(1) }}
               placeholder={t('search') + '...'}
-              className="w-full ps-9 pe-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30"
+              className="w-full ps-8 pe-3 py-[10px] rounded-[12px] border-[1.5px] border-border-input bg-surface-input text-[13px] text-text-primary placeholder-text-label focus:outline-none focus:border-border-active focus:shadow-[0_0_0_3px_rgba(230,126,58,0.12)]"
             />
           </div>
-          <select value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white">
-            <option value="all">{t('status')}: {t('all')}</option>
-            {statuses.map((s) => <option key={s} value={s}>{statusLabel(s)}</option>)}
+          <select
+            value={statusFilter}
+            onChange={(e) => { setStatusFilter(e.target.value); setPage(1) }}
+            className="px-3 py-[10px] rounded-[12px] border-[1.5px] border-border-input bg-surface-input text-[13px] text-text-primary focus:outline-none focus:border-border-active"
+          >
+            <option value="all">Status: All</option>
+            {statuses.map((s) => (
+              <option key={s} value={s}>{lang === 'ar' ? statusLabelAr(s) : s.replace(/_/g, ' ')}</option>
+            ))}
           </select>
-          <select value={categoryFilter} onChange={(e) => { setCategoryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white">
-            <option value="all">{t('category')}: {t('all')}</option>
-            {categories.map((c) => <option key={c} value={c}>{c}</option>)}
-          </select>
-          <select value={countryFilter} onChange={(e) => { setCountryFilter(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white">
-            <option value="all">{t('country')}: {t('all')}</option>
-            {countries.map((c) => <option key={c} value={c}>{c}</option>)}
-          </select>
-          <input type="date" value={dateFrom} onChange={(e) => { setDateFrom(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white" />
-          <input type="date" value={dateTo} onChange={(e) => { setDateTo(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#192433]/30 bg-white" />
-          {hasFilters && (
-            <button onClick={resetFilters} className="flex items-center gap-1 px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-500 hover:bg-slate-50">
-              <X size={13} /> Clear
+          {(search || statusFilter !== 'all') && (
+            <button
+              onClick={() => { setSearch(''); setStatusFilter('all'); setPage(1) }}
+              className="flex items-center gap-1 px-3 py-[10px] rounded-[12px] border-[1.5px] border-border-input text-[13px] text-text-secondary hover:bg-surface-input transition-colors"
+            >
+              <X size={12} /> Clear
             </button>
           )}
+          <div className="ms-auto">
+            <button
+              onClick={handleExport}
+              className="flex items-center gap-2 px-4 py-2 rounded-[12px] bg-brand-orange text-white text-[13px] font-bold hover:bg-[#D4692E] transition-colors shadow-[0_2px_12px_rgba(230,126,58,0.20)]"
+            >
+              <Download size={13} strokeWidth={2} />
+              {t('export')}
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+      {/* Table card */}
+      <div className="bg-surface-card border border-border-card rounded-[14px] shadow-[0_1px_8px_rgba(0,0,0,0.04)] overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50">
-                {(['id', 'contractor_id', 'category', 'country', 'status', 'created_at'] as string[]).map((k) => (
-                  <th key={k} onClick={() => sort(k)} className="px-4 py-3 text-start text-xs font-semibold text-slate-500 uppercase tracking-wide cursor-pointer hover:text-slate-700 select-none whitespace-nowrap">
-                    <span className="inline-flex items-center gap-1">
-                      {k === 'contractor_id' ? 'Contractor' : k === 'created_at' ? 'Created' : k.replace(/_/g, ' ')}
-                      <SortIcon k={k} />
-                    </span>
+              <tr className="bg-surface-input">
+                {[
+                  { k: 'id', label: 'ID' },
+                  { k: 'category', label: 'Category' },
+                  { k: '', label: 'Contractor' },
+                  { k: 'city', label: 'Location' },
+                  { k: '', label: 'Budget' },
+                  { k: '', label: 'Notified / Quotes' },
+                  { k: 'status', label: 'Status' },
+                  { k: '', label: '' },
+                ].map(({ k, label }) => (
+                  <th
+                    key={label || k}
+                    onClick={k ? () => sort(k) : undefined}
+                    className={cn(
+                      'px-[14px] py-[7px] text-start text-[9px] font-semibold text-text-label uppercase tracking-[0.8px] whitespace-nowrap',
+                      k && 'cursor-pointer hover:text-text-secondary select-none'
+                    )}
+                  >
+                    {label && (
+                      <span className="inline-flex items-center gap-1">
+                        {label}
+                        {k && <SortIcon k={k} />}
+                      </span>
+                    )}
                   </th>
                 ))}
-                <th className="px-4 py-3 text-start text-xs font-semibold text-slate-500 uppercase tracking-wide">Supplier Quotes</th>
-                <th className="px-4 py-3 text-start text-xs font-semibold text-slate-500 uppercase tracking-wide">{t('actions')}</th>
               </tr>
             </thead>
             <tbody>
               {pageData.length === 0 ? (
-                <tr><td colSpan={8} className="px-4 py-12 text-center text-slate-400">{t('no_data')}</td></tr>
+                <tr>
+                  <td colSpan={8}>
+                    <EmptyState title="No RFQs found" subtitle="Try adjusting your search or filters." />
+                  </td>
+                </tr>
               ) : pageData.map((rfq) => (
-                <tr key={rfq.id} onClick={() => setSelected(rfq)} className="border-b border-slate-50 hover:bg-slate-50 cursor-pointer transition-colors">
-                  <td className="px-4 py-3 font-mono text-xs text-slate-600">{rfq.id}</td>
-                  <td className="px-4 py-3 text-slate-700 font-medium whitespace-nowrap">{contractorMap[rfq.contractor_id] || rfq.contractor_id}</td>
-                  <td className="px-4 py-3">
-                    <span className="capitalize text-slate-700">{rfq.category}</span>
-                    <span className="text-slate-400 text-xs ms-1">/ {rfq.subcategory}</span>
+                <tr
+                  key={rfq.id}
+                  onClick={() => setSelected(rfq)}
+                  className="border-b border-border-divider hover:bg-[#FFFBF4] cursor-pointer transition-colors"
+                >
+                  <td className="px-[14px] py-[9px]">
+                    <span className="font-mono text-[10px] text-text-muted">{rfq.id}</span>
                   </td>
-                  <td className="px-4 py-3 text-slate-600 whitespace-nowrap">{rfq.city}, {rfq.country}</td>
-                  <td className="px-4 py-3">
-                    <span className={cn('px-2 py-0.5 rounded-full text-xs font-medium', STATUS_COLORS[rfq.status] || 'bg-gray-100 text-gray-600')}>
-                      {statusLabel(rfq.status)}
-                    </span>
+                  <td className="px-[14px] py-[9px]">
+                    <CategoryChip category={rfq.category} />
+                    <span className="text-text-muted text-[10px] ms-1">/ {getField(rfq as unknown as Record<string, unknown>, 'subcategory', lang)}</span>
                   </td>
-                  <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{formatDate(rfq.created_at)}</td>
-                  <td className="px-4 py-3">
-                    <span className="text-xs font-medium text-slate-600">{(rfq.supplier_responses as unknown[]).length} quotes</span>
+                  <td className="px-[14px] py-[9px] text-[11px] text-text-primary font-medium whitespace-nowrap">
+                    {getField(rfq as unknown as Record<string, unknown>, 'contractorCompany', lang)}
                   </td>
-                  <td className="px-4 py-3">
-                    <button onClick={(e) => { e.stopPropagation(); setSelected(rfq) }} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500">
-                      <Eye size={15} />
+                  <td className="px-[14px] py-[9px] text-[11px] text-text-primary whitespace-nowrap">
+                    🇴🇲 {getField(rfq as unknown as Record<string, unknown>, 'city', lang)}
+                  </td>
+                  <td className="px-[14px] py-[9px] text-[10px] text-text-muted whitespace-nowrap">
+                    {formatOMR(rfq.budgetMin, lang)} – {formatOMR(rfq.budgetMax, lang)}
+                  </td>
+                  <td className="px-[14px] py-[9px] text-[11px] text-text-primary font-medium">
+                    {rfq.suppliersNotified} / {rfq.quotesReceived}
+                  </td>
+                  <td className="px-[14px] py-[9px]">
+                    <StatusBadge status={rfq.status} customLabel={lang === 'ar' ? statusLabelAr(rfq.status) : undefined} />
+                  </td>
+                  <td className="px-[14px] py-[9px]">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setSelected(rfq) }}
+                      className="w-6 h-6 rounded-[6px] bg-surface-input flex items-center justify-center hover:bg-status-warningBg transition-colors group"
+                    >
+                      <Eye size={11} className="text-text-muted group-hover:text-brand-orange" />
                     </button>
                   </td>
                 </tr>
@@ -202,102 +243,98 @@ export default function RFQsPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100">
-          <p className="text-sm text-slate-500">
+        {/* Pagination */}
+        <div className="flex items-center justify-between px-[14px] py-[10px] border-t border-border-divider">
+          <p className="text-[11px] text-text-muted">
             Showing {Math.min((page - 1) * PAGE_SIZE + 1, filtered.length)}–{Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
           </p>
           <div className="flex items-center gap-1">
-            <button onClick={() => setPage(1)} disabled={page === 1} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">«</button>
-            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">‹</button>
+            <PagBtn onClick={() => setPage(1)} disabled={page === 1}>«</PagBtn>
+            <PagBtn onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>‹</PagBtn>
             {[...Array(Math.min(5, totalPages))].map((_, i) => {
               const p = Math.max(1, Math.min(page - 2, totalPages - 4)) + i
               return (
-                <button key={p} onClick={() => setPage(p)} className={cn('w-8 h-8 rounded text-sm', p === page ? 'bg-[#192433] text-white' : 'text-slate-500 hover:bg-slate-100')}>
+                <button
+                  key={p}
+                  onClick={() => setPage(p)}
+                  className={cn('w-7 h-7 rounded-[6px] text-[11px] font-medium transition-colors', p === page ? 'bg-brand-navy text-white' : 'text-text-muted hover:bg-surface-input')}
+                >
                   {p}
                 </button>
               )
             })}
-            <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">›</button>
-            <button onClick={() => setPage(totalPages)} disabled={page === totalPages} className="px-2 py-1 rounded text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-40">»</button>
+            <PagBtn onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}>›</PagBtn>
+            <PagBtn onClick={() => setPage(totalPages)} disabled={page === totalPages}>»</PagBtn>
           </div>
         </div>
       </div>
 
+      {/* Detail modal */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onClick={() => setSelected(null)}>
-          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 border-b border-slate-100">
+          <div className="bg-surface-card rounded-[14px] shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-border-divider">
               <div>
-                <h2 className="font-bold text-slate-800">RFQ Details</h2>
-                <p className="text-xs font-mono text-slate-500">{selected.id}</p>
+                <p className="text-[13px] font-semibold text-text-primary">RFQ Details</p>
+                <p className="font-mono text-[10px] text-text-muted">{selected.id}</p>
               </div>
-              <button onClick={() => setSelected(null)} className="p-2 rounded-lg hover:bg-slate-100"><X size={18} /></button>
+              <button onClick={() => setSelected(null)} className="w-7 h-7 rounded-[6px] bg-surface-input flex items-center justify-center hover:bg-status-errorBg transition-colors">
+                <X size={14} className="text-text-muted" />
+              </button>
             </div>
-            <div className="p-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <Field label="Contractor" value={contractorMap[selected.contractor_id] || selected.contractor_id} />
-                <Field label="Category" value={`${selected.category} / ${selected.subcategory}`} />
-                <Field label="Location" value={`${selected.city}, ${selected.country}`} />
-                <Field label="Quantity" value={String(selected.quantity)} />
-                <Field label="Start Date" value={formatDate(selected.start_date)} />
-                <Field label="End Date" value={formatDate(selected.end_date)} />
-                <Field label="Status" value={statusLabel(selected.status)} />
-                <Field label="Created" value={formatDateTime(selected.created_at)} />
-              </div>
+            <div className="p-5 grid grid-cols-2 gap-4">
+              <DetailField label="Contractor" value={getField(selected as unknown as Record<string, unknown>, 'contractorCompany', lang)} />
+              <DetailField label="Category" value={`${getField(selected as unknown as Record<string, unknown>, 'category', lang)} / ${getField(selected as unknown as Record<string, unknown>, 'subcategory', lang)}`} />
+              <DetailField label="Location" value={`🇴🇲 ${getField(selected as unknown as Record<string, unknown>, 'city', lang)}, Oman`} />
+              <DetailField label="Budget" value={`${formatOMR(selected.budgetMin, lang)} – ${formatOMR(selected.budgetMax, lang)}`} />
+              <DetailField label="Suppliers Notified" value={String(selected.suppliersNotified)} />
+              <DetailField label="Quotes Received" value={String(selected.quotesReceived)} />
+              <DetailField label="Date" value={selected.date} />
               <div>
-                <p className="text-xs font-semibold text-slate-500 uppercase mb-1">Description</p>
-                <p className="text-sm text-slate-700 bg-slate-50 rounded-lg p-3">{selected.description}</p>
+                <p className="text-[9px] font-semibold text-text-label uppercase tracking-[0.7px] mb-1">Status</p>
+                <StatusBadge status={selected.status} />
               </div>
-              {(selected.supplier_responses as unknown[]).length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold text-slate-500 uppercase mb-2">Supplier Responses ({(selected.supplier_responses as unknown[]).length})</p>
-                  <div className="space-y-2">
-                    {(selected.supplier_responses as Array<{id:string;supplier_id:string;unit_price_usd:number;total_price_usd:number;currency:string;notes:string;submitted_at:string;status:string}>).map((sr) => (
-                      <div key={sr.id} className="bg-slate-50 rounded-lg p-3 text-sm">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="font-medium text-slate-700">{supplierMap[sr.supplier_id] || sr.supplier_id}</span>
-                          <span className={cn('px-2 py-0.5 rounded-full text-xs font-medium', STATUS_COLORS[sr.status] || 'bg-gray-100 text-gray-600')}>{statusLabel(sr.status)}</span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-x-4 text-xs text-slate-500">
-                          <span>Unit: ${sr.unit_price_usd} {sr.currency}</span>
-                          <span>Total: ${sr.total_price_usd.toLocaleString()}</span>
-                        </div>
-                        <p className="text-xs text-slate-600 mt-1.5 italic">{sr.notes}</p>
-                        <p className="text-xs text-slate-400 mt-1">{formatDateTime(sr.submitted_at)}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }
 
-function Field({ label, value }: { label: string; value: string }) {
+function PagBtn({ onClick, disabled, children }: { onClick: () => void; disabled: boolean; children: React.ReactNode }) {
+  return (
+    <button onClick={onClick} disabled={disabled} className="w-7 h-7 rounded-[6px] text-[11px] text-text-muted hover:bg-surface-input disabled:opacity-30 transition-colors">
+      {children}
+    </button>
+  )
+}
+
+function DetailField({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs font-semibold text-slate-400 uppercase mb-0.5">{label}</p>
-      <p className="text-sm text-slate-700">{value}</p>
+      <p className="text-[9px] font-semibold text-text-label uppercase tracking-[0.7px] mb-1">{label}</p>
+      <p className="text-[12px] text-text-primary">{value}</p>
     </div>
   )
 }
 
-function SkeletonTable({ cols }: { cols: number }) {
+function SkeletonTable() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden animate-pulse">
-      <div className="p-4 border-b border-slate-100">
-        <div className="h-4 bg-slate-200 rounded w-32" />
+    <div className="bg-surface-card border border-border-card rounded-[14px] overflow-hidden animate-pulse">
+      <div className="p-4 border-b border-border-divider">
+        <div className="h-3 bg-border-card rounded w-32" />
       </div>
       <table className="w-full">
-        <thead><tr className="border-b border-slate-100">{[...Array(cols)].map((_, i) => <th key={i} className="px-4 py-3"><div className="h-3 bg-slate-200 rounded" /></th>)}</tr></thead>
+        <thead>
+          <tr className="bg-surface-input">
+            {[...Array(8)].map((_, i) => <th key={i} className="px-[14px] py-[7px]"><div className="h-2 bg-border-card rounded" /></th>)}
+          </tr>
+        </thead>
         <tbody>
-          {[...Array(8)].map((_, i) => (
-            <tr key={i} className="border-b border-slate-50">
-              {[...Array(cols)].map((_, j) => <td key={j} className="px-4 py-3"><div className="h-4 bg-slate-100 rounded" /></td>)}
+          {[...Array(6)].map((_, i) => (
+            <tr key={i} className="border-b border-border-divider">
+              {[...Array(8)].map((_, j) => <td key={j} className="px-[14px] py-[9px]"><div className="h-3 bg-surface-input rounded" /></td>)}
             </tr>
           ))}
         </tbody>

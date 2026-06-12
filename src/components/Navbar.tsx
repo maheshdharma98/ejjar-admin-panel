@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { LogOut, Shield, Compass } from 'lucide-react'
+import { LogOut, Shield, Compass, Menu } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import { useTourStore } from '@/stores/tourStore'
 import LanguageSwitcher from './LanguageSwitcher'
 
-export default function Navbar() {
+interface NavbarProps {
+  onMenuClick: () => void
+}
+
+export default function Navbar({ onMenuClick }: NavbarProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { adminName, role, logout } = useAuthStore()
@@ -17,7 +21,14 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed top-0 start-60 end-0 h-14 bg-white border-b border-slate-200 flex items-center justify-end px-6 gap-4 z-20">
+    <header className="fixed top-0 start-0 lg:start-60 end-0 h-14 bg-white border-b border-slate-200 flex items-center justify-between lg:justify-end px-4 sm:px-6 gap-4 z-20">
+      <button
+        onClick={onMenuClick}
+        className="lg:hidden text-slate-600 hover:text-slate-900 p-1"
+        aria-label="Open menu"
+      >
+        <Menu size={22} />
+      </button>
       <LanguageSwitcher />
 
       <button
@@ -26,7 +37,7 @@ export default function Navbar() {
         title="Start Demo Tour"
       >
         <Compass size={15} />
-        <span className="hidden sm:inline">Tour</span>
+        <span className="hidden sm:inline">{t('tour')}</span>
       </button>
 
       <div className="flex items-center gap-2 text-sm" data-tour="settings">
