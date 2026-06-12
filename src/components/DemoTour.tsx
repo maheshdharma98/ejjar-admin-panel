@@ -146,8 +146,6 @@ export default function DemoTour() {
       run={isRunning}
       stepIndex={stepIndex}
       continuous
-      showProgress
-      showSkipButton
       scrollToFirstStep
       onEvent={handleEvent}
       options={{
@@ -155,6 +153,8 @@ export default function DemoTour() {
         overlayColor: 'rgba(15, 23, 42, 0.55)',
         zIndex: 10000,
         width: 340,
+        showProgress: true,
+        buttons: ['back', 'primary', 'skip'],
       }}
       styles={{
         tooltip: {
